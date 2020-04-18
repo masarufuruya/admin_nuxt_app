@@ -1,3 +1,4 @@
+const environment = process.env.NODE_ENV || 'development';
 
 export default {
   mode: 'universal',
@@ -40,7 +41,11 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
+  proxy: {
+    '/api': (environment === 'development') ? 'http://localhost:8000' : 'https://api.example.com'
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
