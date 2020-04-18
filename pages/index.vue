@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        admin_nuxt_app
+        {{data}}
       </h1>
       <h2 class="subtitle">
         My superb Nuxt.js project
@@ -34,6 +34,12 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  async asyncData(app) {
+    const data = await app.$axios.$get('http://localhost:8000/api/')
+    return {
+      data
+    }
   }
 }
 </script>
