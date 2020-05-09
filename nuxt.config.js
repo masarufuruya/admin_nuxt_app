@@ -1,4 +1,4 @@
-const environment = process.env.NODE_ENV || 'development';
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -41,18 +41,15 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
+    '@nuxtjs/dotenv',
   ],
-  proxy: {
-    '/api': (environment === 'development') ? 'http://localhost:8000/api' : 'https://api.example.com'
-  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    // proxy: true,
-    // credentials: true
+    baseURL: process.env.API_URL,
+    credentials: true
   },
   /*
   ** Build configuration
