@@ -44,13 +44,15 @@ export default {
     '@nuxtjs/proxy',
   ],
   proxy: {
-    '/api': (environment === 'development') ? 'http://localhost:8000' : 'https://api.example.com'
+    '/api': (environment === 'development') ? 'http://localhost:8000/api' : 'https://api.example.com'
   },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    // proxy: true,
+    // credentials: true
   },
   /*
   ** Build configuration
